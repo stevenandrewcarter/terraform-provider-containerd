@@ -1,2 +1,3 @@
 *.zip
 containerd-1.4.3
+vendor
