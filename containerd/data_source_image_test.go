@@ -1,31 +1,27 @@
 package containerd
 
 import (
-	"context"
 	"testing"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 )
 
-func Test_datasourceImageRead(t *testing.T) {
-	diag := dataSourceImageRead(context.Background(), nil, nil)
-	if diag == nil {
-		t.Error("expected to have a diag result!")
-	}
-	t.Logf("Results: %v", diag)
-	if !diag.HasError() {
-		t.Error("should have an error")
-	}
-}
-
 func TestDataSourceImage(t *testing.T) {
-	resource.ParallelTest(t, resource.TestCase{
+	resource.Test(t, resource.TestCase{
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			{
-				Config: "",
-				Check:  resource.ComposeTestCheckFunc(),
+				Config: dataSourceImageConfig,
+				Check: resource.ComposeTestCheckFunc(
+					resource.TestCheckResourceAttrSet("data.containerd_image.test", "name"),
+				),
 			},
 		},
 	})
 }
+
+const dataSourceImageConfig = `
+data "containerd_image" "test" {
+	name = "alpine"
+}
+`

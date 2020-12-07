@@ -11,8 +11,7 @@ require (
 	github.com/containerd/ttrpc v1.0.2 // indirect
 	github.com/containerd/typeurl v1.0.1 // indirect
 	github.com/docker/go-events v0.0.0-20190806004212-e31b211e4f1c // indirect
-	github.com/gogo/googleapis v1.4.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk v1.16.0
+	github.com/gogo/googleapis v1.4.0 // indirect	
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.3.0
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/opencontainers/runc v0.1.1 // indirect
